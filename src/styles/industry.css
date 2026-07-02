@@ -1,0 +1,351 @@
+/* ===================================================
+   INDUSTRY STRIP
+=================================================== */
+
+.industry-strip{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:10px 0;
+
+    margin-top:0;
+
+    z-index:2;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    background:rgba(255,255,255,.015);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+}
+/* ==========================================
+   Ambient Glow
+========================================== */
+
+.industry-strip::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    width:500px;
+height:120px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(217,255,0,.08),
+
+            transparent 72%
+
+        );
+
+    filter:blur(70px);
+
+    animation:industryGlow 8s ease-in-out infinite;
+
+    pointer-events:none;
+
+}
+
+/* ==========================================
+   Fade Edges
+========================================== */
+
+.industry-fade{
+
+    position:absolute;
+
+    top:0;
+
+    width:180px;
+
+    height:100%;
+
+    z-index:5;
+
+    pointer-events:none;
+
+}
+
+.industry-fade.left{
+
+    left:0;
+
+    background:
+
+        linear-gradient(
+
+            to right,
+
+            #050505,
+
+            transparent
+
+        );
+
+}
+
+.industry-fade.right{
+
+    right:0;
+
+    background:
+
+        linear-gradient(
+
+            to left,
+
+            #050505,
+
+            transparent
+
+        );
+
+}
+
+/* ==========================================
+   Marquee
+========================================== */
+
+.marquee{
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+}
+
+.marquee-track{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:45px;
+
+    height:20px;
+
+    width:max-content;
+
+    white-space:nowrap;
+
+    animation:marquee 30s linear infinite;
+
+}
+.marquee-track span{
+
+    display:flex;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+    color:#9a9a9a;
+
+}
+
+.marquee-track span:hover{
+
+    color:#D9FF00;
+
+    text-shadow:0 0 12px rgba(217,255,0,.4);
+
+}
+
+/* Pause on hover */
+
+/* ==========================================
+   Items
+========================================== */
+
+ˇ
+
+.marquee-track span:hover{
+
+    color:#D9FF00;
+
+    transform:translateY(-2px);
+
+    text-shadow:
+
+        0 0 14px rgba(217,255,0,.45);
+
+}
+
+/* ==========================================
+   Top Glow Line
+========================================== */
+
+.industry-strip::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-40%;
+
+    top:0;
+
+    width:40%;
+
+    height:1px;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            #D9FF00,
+
+            transparent
+
+        );
+
+    animation:industryLine 6s linear infinite;
+
+}
+
+/* ==========================================
+   Animations
+========================================== */
+
+@keyframes marquee{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-50%);
+
+    }
+
+}
+
+@keyframes industryGlow{
+
+    0%,100%{
+
+        opacity:.45;
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:translate(-50%,-50%) scale(1.08);
+
+    }
+
+}
+
+@keyframes industryLine{
+
+    from{
+
+        left:-40%;
+
+    }
+
+    to{
+
+        left:140%;
+
+    }
+
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width:768px){
+
+    .industry-strip{
+
+        padding:24px 0;
+
+    }
+
+    .marquee-track{
+
+        gap:40px;
+
+    }
+
+    .marquee-track span{
+
+        font-size:13px;
+
+    }
+
+    .industry-fade{
+
+        width:80px;
+
+    }
+
+}
+.dot{
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+    background:#D9FF00;
+
+    box-shadow:0 0 10px rgba(217,255,0,.5);
+
+    margin-right:12px;
+
+    flex-shrink:0;
+
+}
+/* Override global section padding */
+
+section.industry-strip{
+
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+
+    min-height:auto;
+
+}

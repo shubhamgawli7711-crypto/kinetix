@@ -1,0 +1,569 @@
+/* ===================================================
+   ABOUT
+=================================================== */
+
+.about{
+
+    position:relative;
+
+    padding:140px 0;
+
+    overflow:hidden;
+
+}
+
+/* ===================================================
+   AMBIENT GLOW
+=================================================== */
+
+.about-glow{
+
+    position:absolute;
+
+    right:-250px;
+
+    top:50%;
+
+    width:700px;
+
+    height:700px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(217,255,0,.06),
+            transparent 72%
+        );
+
+    filter:blur(100px);
+
+    animation:aboutGlow 12s ease-in-out infinite;
+
+    pointer-events:none;
+
+}
+
+
+/* ===================================================
+   GRID
+=================================================== */
+
+.about-grid{
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:120px;
+
+    align-items:center;
+
+    z-index:2;
+
+}
+/* ===================================================
+   LEFT
+=================================================== */
+
+.section-tag{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:26px;
+
+    color:var(--primary);
+
+    font-size:13px;
+
+    letter-spacing:.32em;
+
+    text-transform:uppercase;
+
+}
+
+.section-tag::before{
+
+    content:"";
+
+    width:40px;
+
+    height:1px;
+
+    background:var(--primary);
+
+}
+
+.about h2{
+
+    margin:0;
+
+    font-size:clamp(3rem,5vw,5rem);
+
+    line-height:.92;
+
+    letter-spacing:-4px;
+
+    font-weight:800;
+
+}
+.about h2 span{
+
+    color:var(--primary);
+
+    text-shadow:
+        0 0 20px rgba(217,255,0,.12);
+
+}
+
+.about-sub{
+
+    margin-top:34px;
+
+    max-width:540px;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#9d9d9d;
+
+}
+
+/* ===================================================
+   RIGHT
+=================================================== */
+
+.about-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+.about-right p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#9b9b9b;
+
+}
+
+/* ===================================================
+   STATS
+=================================================== */
+
+.about-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+
+    margin-top:40px;
+
+}
+
+.stat-card{
+
+    position:relative;
+
+    padding:28px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(255,255,255,.05),
+
+            rgba(255,255,255,.02)
+
+        );
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:
+
+        transform .4s ease,
+
+        border-color .4s ease,
+
+        box-shadow .4s ease;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(217,255,0,.45);
+
+    box-shadow:
+
+0 15px 40px rgba(0,0,0,.35),
+
+0 0 40px rgba(217,255,0,.18);
+
+}
+
+.stat-card h3{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    letter-spacing:-1px;
+
+}
+.stat-card span{
+
+    display:block;
+
+    margin-top:14px;
+
+    color:#9b9b9b;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    text-transform:none;
+
+    letter-spacing:0;
+
+}
+/* ===================================================
+   GLASS SHINE
+=================================================== */
+
+.stat-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-60%;
+
+    left:-35%;
+
+    width:120px;
+
+    height:220%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    transform:rotate(18deg);
+
+    opacity:0;
+
+}
+
+.stat-card:hover::before{
+
+    animation:cardShine .8s ease;
+
+}
+
+/* ===================================================
+   CARD GLOW
+=================================================== */
+
+.stat-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:auto;
+
+    width:220px;
+
+    height:220px;
+
+    right:-120px;
+
+    bottom:-120px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(217,255,0,.14),
+
+            transparent 70%
+
+        );
+
+    filter:blur(55px);
+
+    opacity:0;
+
+    transition:.45s;
+
+}
+
+.stat-card:hover::after{
+
+    opacity:1;
+
+}
+
+/* ===================================================
+   WATERMARK MOTION
+=================================================== */
+
+
+@keyframes aboutGlow{
+
+    0%,100%{
+
+        opacity:.35;
+
+        transform:
+        translate(0,0)
+        scale(1);
+
+    }
+
+    50%{
+
+        opacity:.8;
+
+        transform:
+        translate(-40px,30px)
+        scale(1.12);
+
+    }
+
+}
+
+@keyframes cardShine{
+
+    from{
+
+        transform:
+            translateX(-180%)
+            rotate(18deg);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+            translateX(320%)
+            rotate(18deg);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:1000px){
+
+.about-grid{
+
+grid-template-columns:1fr;
+
+gap:80px;
+
+}
+
+.about-stats{
+
+grid-template-columns:1fr;
+
+}
+
+.about-watermark{
+
+display:none;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.about{
+
+padding:100px 0;
+
+}
+
+.about h2{
+
+font-size:46px;
+
+letter-spacing:-2px;
+
+}
+
+.about-sub{
+
+font-size:16px;
+
+}
+
+.about-right p{
+
+font-size:16px;
+
+}
+
+.stat-card{
+
+    animation:cardBreath 6s ease-in-out infinite;
+
+}
+
+.stat-card h3{
+
+font-size:36px;
+
+}
+
+}
+/* ==========================================
+   FLOATING ORBS
+========================================== */
+
+.about-orbs{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.about-orbs span{
+
+    position:absolute;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#D9FF00;
+
+    filter:blur(3px);
+
+    opacity:.22;
+
+}
+
+.about-orbs span:nth-child(1){
+
+    top:18%;
+
+    right:18%;
+
+    animation:orbFloat 9s ease-in-out infinite;
+
+}
+
+.about-orbs span:nth-child(2){
+
+    bottom:22%;
+
+    right:8%;
+
+    animation:orbFloat 12s ease-in-out infinite;
+
+}
+
+.about-orbs span:nth-child(3){
+
+    top:60%;
+
+    right:28%;
+
+    animation:orbFloat 10s ease-in-out infinite;
+
+}
+
+@keyframes orbFloat{
+
+    0%,100%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-20px)
+        scale(1.4);
+
+    }
+
+}
+@keyframes cardBreath{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-4px);
+
+    }
+
+}

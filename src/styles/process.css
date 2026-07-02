@@ -1,0 +1,98 @@
+.process{
+
+    width:min(1180px,92%);
+    margin:180px auto;
+
+}
+
+.process h2{
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    margin:20px 0 80px;
+
+    line-height:1;
+
+}
+
+.process-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.process-card{
+
+    display:grid;
+
+    grid-template-columns:120px 1fr;
+
+    gap:50px;
+
+    padding:50px 0;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+}
+
+.process-card:last-child{
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.process-number{
+
+    color:#D9FF00;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.process-content h3{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+}
+
+.process-content p{
+
+    color:#8d8d8d;
+
+    max-width:650px;
+
+    line-height:1.8;
+
+}
+
+.process-card:hover{
+
+    padding-left:20px;
+
+}
+
+@media(max-width:900px){
+
+.process-card{
+
+grid-template-columns:1fr;
+
+gap:18px;
+
+}
+
+.process h2{
+
+font-size:44px;
+
+}
+
+}

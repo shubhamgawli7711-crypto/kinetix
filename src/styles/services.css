@@ -1,0 +1,598 @@
+/* ===================================================
+   SERVICES
+=================================================== */
+
+.services{
+    position:relative;
+    width:min(1200px,100%);
+    margin: 30px auto 160px;
+}
+.services h2 span{
+
+    color:var(--primary);
+
+    font-style:italic;
+
+    text-shadow:
+        0 0 20px rgba(217,255,0,.15);
+
+}
+.services::before{
+    content:"";
+    position:absolute;
+    inset:auto -220px -120px auto;
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(217,255,0,.07),transparent 70%);
+    filter:blur(110px);
+    pointer-events:none;
+    animation:servicesGlow 10s ease-in-out infinite;
+}
+
+/* ===================================================
+   HEADER
+=================================================== */
+
+.services-top{
+    margin-bottom:70px;
+}
+
+.services .section-tag{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:var(--primary);
+    font-size:13px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+}
+
+.services .section-tag::before{
+    content:"";
+    width:42px;
+    height:1px;
+    background:var(--primary);
+}
+
+.services h2{
+    margin-top:22px;
+    font-size:clamp(3.4rem,5vw,5.3rem);
+    line-height:.95;
+    letter-spacing:-4px;
+    font-weight:800;
+}
+
+/* ===================================================
+   LIST
+=================================================== */
+
+.services-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+/* ===================================================
+   CARD
+=================================================== */
+
+.service-card{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:42px;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    background:rgba(255,255,255,.015);
+
+    backdrop-filter:blur(10px);
+
+    -webkit-backdrop-filter:blur(10px);
+
+    transition:
+        transform .45s,
+        border-color .45s,
+        background .45s,
+        box-shadow .45s;
+
+}
+
+/* ===================================================
+   HOVER GRADIENT
+=================================================== */
+
+.service-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(217,255,0,.06) 0%,
+            rgba(217,255,0,.035) 40%,
+            rgba(255,150,120,.07) 100%
+        );
+
+    transition:opacity .45s;
+
+    z-index:0;
+
+}
+
+.service-card>*{
+    position:relative;
+    z-index:2;
+}
+
+/* ===================================================
+   NUMBER
+=================================================== */
+
+.service-number{
+
+    width:70px;
+
+    flex-shrink:0;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#666;
+
+    transition:.45s;
+
+}
+
+/* ===================================================
+   CONTENT
+=================================================== */
+
+.service-content{
+
+    flex:1;
+
+}
+
+.service-content h3{
+
+    font-size:36px;
+
+    font-weight:700;
+
+    letter-spacing:-1px;
+
+    transition:.45s;
+
+}
+
+.service-content p{
+
+    margin-top:14px;
+
+    max-width:650px;
+
+    color:#8a8a8a;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    transition:.45s;
+
+}
+
+/* ===================================================
+   ARROW
+=================================================== */
+
+.service-arrow{
+
+    width:50px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+.service-arrow span{
+
+    font-size:34px;
+
+    color:#777;
+
+    transition:.45s;
+
+}
+/* ===================================================
+   PREMIUM HOVER
+=================================================== */
+
+.service-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(217,255,0,.25);
+
+    box-shadow:
+
+        0 18px 50px rgba(0,0,0,.35),
+
+        0 0 30px rgba(217,255,0,.08);
+
+}
+
+.service-card:hover::before{
+
+    opacity:1;
+
+}
+
+/* ==========================================
+   Number
+========================================== */
+
+.service-card:hover .service-number{
+
+    color:var(--primary);
+
+    transform:translateX(6px);
+
+}
+
+/* ==========================================
+   Title
+========================================== */
+
+.service-card:hover h3{
+
+    color:var(--primary);
+
+}
+
+/* ==========================================
+   Description
+========================================== */
+
+.service-card:hover p{
+
+    color:#d6d6d6;
+
+}
+
+/* ==========================================
+   Arrow
+========================================== */
+
+.service-card:hover .service-arrow span{
+
+    color:var(--primary);
+
+    transform:
+
+        translateX(10px)
+
+        rotate(-15deg);
+
+}
+
+/* ===================================================
+   SHINE EFFECT
+=================================================== */
+
+.service-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-70%;
+
+    left:-30%;
+
+    width:120px;
+
+    height:240%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.18),
+
+            transparent
+
+        );
+
+    transform:
+
+        translateX(-220%)
+
+        rotate(18deg);
+
+    pointer-events:none;
+
+}
+
+.service-card:hover::after{
+
+    animation:serviceShine .85s ease;
+
+}
+
+@keyframes serviceShine{
+
+    from{
+
+        transform:
+
+            translateX(-220%)
+
+            rotate(18deg);
+
+    }
+
+    to{
+
+        transform:
+
+            translateX(320%)
+
+            rotate(18deg);
+
+    }
+
+}
+
+/* ===================================================
+   LEFT ACCENT
+=================================================== */
+
+.service-card{
+
+    border-left:1px solid transparent;
+
+}
+
+.service-card:hover{
+
+    border-left:3px solid var(--primary);
+
+}
+
+/* ===================================================
+   SECTION GLOW
+=================================================== */
+
+@keyframes servicesGlow{
+
+    0%,100%{
+
+        transform:
+
+            translate(0,0)
+
+            scale(1);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:
+
+            translate(-35px,25px)
+
+            scale(1.08);
+
+        opacity:.9;
+
+    }
+
+}
+/* ===================================================
+   INDIVIDUAL SERVICE PERSONALITY
+=================================================== */
+
+/* Social Media */
+
+.service-card:nth-child(1):hover{
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.35),
+        0 0 35px rgba(217,255,0,.15);
+
+}
+
+/* Content */
+
+.service-card:nth-child(2):hover{
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.35),
+        0 0 35px rgba(255,120,120,.15);
+
+}
+
+.service-card:nth-child(2):hover::before{
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,120,120,.07),
+            rgba(255,255,255,.02)
+        );
+
+}
+
+/* Website */
+
+.service-card:nth-child(3):hover{
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.35),
+        0 0 35px rgba(120,190,255,.15);
+
+}
+
+.service-card:nth-child(3):hover::before{
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(120,190,255,.08),
+            rgba(255,255,255,.02)
+        );
+
+}
+
+/* Brand */
+
+.service-card:nth-child(4):hover{
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.35),
+        0 0 35px rgba(170,120,255,.15);
+
+}
+
+.service-card:nth-child(4):hover::before{
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(170,120,255,.08),
+            rgba(255,255,255,.02)
+        );
+
+}
+
+/* ===================================================
+   FLOATING MOTION
+=================================================== */
+
+.service-card{
+
+    animation:serviceFloat 8s ease-in-out infinite;
+
+}
+
+.service-card:nth-child(2){
+
+    animation-delay:1s;
+
+}
+
+.service-card:nth-child(3){
+
+    animation-delay:2s;
+
+}
+
+.service-card:nth-child(4){
+
+    animation-delay:3s;
+
+}
+
+@keyframes serviceFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-3px);
+
+    }
+
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:900px){
+
+.services{
+
+    margin:90px auto;
+
+}
+
+.services h2{
+
+    font-size:46px;
+
+    letter-spacing:-2px;
+
+}
+
+.service-card{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    padding:28px;
+
+}
+
+.service-number{
+
+    width:auto;
+
+}
+
+.service-arrow{
+
+    width:auto;
+
+    justify-content:flex-start;
+
+}
+
+.service-content h3{
+
+    font-size:28px;
+
+}
+
+.service-content p{
+
+    font-size:15px;
+
+}
+
+}
