@@ -1,106 +1,205 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Logo from "../site/Logo";
 
 export default function Hero() {
-  const watermarkRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!watermarkRef.current) return;
+    const watermarkRef = useRef<HTMLDivElement>(null);
 
-      const x = (e.clientX - window.innerWidth / 2) * 0.02;
-      const y = (e.clientY - window.innerHeight / 2) * 0.02;
+    const frame = useRef<number | null>(null);
 
-      watermarkRef.current.style.transform = `translate(${x}px, ${y}px)`;
-    };
+    const particles = useMemo(
+        () =>
+            Array.from({ length: 30 }, () => ({
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                delay: `${Math.random() * 10}s`,
+                duration: `${8 + Math.random() * 8}s`,
+            })),
+        []
+    );
 
-    window.addEventListener("mousemove", handleMouseMove);
+    useEffect(() => {
 
-    return () =>
-      window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+        const handleMouseMove = (e: MouseEvent) => {
 
-  return (
-    <section className="hero">
+            if (!watermarkRef.current) return;
 
-      {/* Ambient Glow */}
-      <div className="hero-glow"></div>
-      <div className="hero-grid"></div>
+            if (frame.current !== null) {
+                cancelAnimationFrame(frame.current);
+            }
 
-      {/* Floating Particles */}
-      <div className="hero-particles">
-        {Array.from({ length: 60 }).map((_, i) => (
-          <span
-            key={i}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${8 + Math.random() * 8}s`,
-            }}
-          />
-        ))}
-      </div>
+            frame.current = requestAnimationFrame(() => {
 
-      {/* Background Logo */}
-      <div
-        className="hero-bg"
-        ref={watermarkRef}
-      >
-        <Logo
-          size={900}
-          className="hero-watermark"
-        />
-      </div>
+                const x =
+                    (e.clientX - window.innerWidth / 2) * 0.02;
 
-      {/* Content */}
-      <div className="container">
+                const y =
+                    (e.clientY - window.innerHeight / 2) * 0.02;
 
-        <div className="hero-content">
+                watermarkRef.current?.style.setProperty(
+                    "--mouse-x",
+                    `${x}px`
+                );
 
-          <p className="hero-tag">
-            CREATIVE DIGITAL MARKETING STUDIO
-          </p>
+                watermarkRef.current?.style.setProperty(
+                    "--mouse-y",
+                    `${y}px`
+                );
 
-          <h1>
-            We don't follow
-            <br />
-            trends.
-            <br />
-            <span>We create</span>
-            <br />
-            <span>them.</span>
-          </h1>
+            });
 
-          <p className="hero-text">
-            We help ambitious brands grow through
-            strategy, content, branding, websites
-            and performance marketing that people
-            actually remember.
-          </p>
+        };
 
-          <div className="hero-buttons">
+        window.addEventListener("mousemove", handleMouseMove);
 
-            <button className="primary-btn">
-              LET'S TALK
-              <span>→</span>
-            </button>
+        return () => {
 
-            <button className="secondary-btn">
-              OUR SERVICES
-            </button>
+            window.removeEventListener(
+                "mousemove",
+                handleMouseMove
+            );
 
-          </div>
+            if (frame.current !== null) {
+                cancelAnimationFrame(frame.current);
+            }
 
-        </div>
+        };
 
-      </div>
+    }, []);
 
-      {/* Scroll Indicator */}
-      <div className="scroll-indicator">
-        <span></span>
-      </div>
+    return (
 
-    </section>
-  );
+        <section className="hero">
+
+            {/* Background */}
+
+            <div className="hero-glow"></div>
+
+            <div className="hero-grid"></div>
+
+            {/* Particles */}
+
+            <div className="hero-particles">
+
+                {particles.map((particle, index) => (
+
+                    <span
+
+                        key={index}
+
+                        style={{
+
+                            left: particle.left,
+
+                            top: particle.top,
+
+                            animationDelay: particle.delay,
+
+                            animationDuration: particle.duration,
+
+                        }}
+
+                    />
+
+                ))}
+
+            </div>
+
+            {/* Watermark */}
+
+            <div className="hero-bg">
+
+                <div
+
+                    className="hero-watermark-wrapper"
+
+                    ref={watermarkRef}
+
+                >
+
+                    <Logo
+
+                        size={900}
+
+                        className="hero-watermark"
+
+                    />
+
+                </div>
+
+            </div>
+
+            {/* Content */}
+
+            <div className="container">
+
+                <div className="hero-content">
+
+                    <p className="hero-tag">
+
+                        CREATIVE DIGITAL MARKETING STUDIO
+
+                    </p>
+
+                    <h1>
+
+                        We don't follow
+
+                        <br />
+
+                        trends.
+
+                        <br />
+
+                        <span>We create</span>
+
+                        <br />
+
+                        <span>them.</span>
+
+                    </h1>
+
+                    <p className="hero-text">
+
+                        We help ambitious brands grow through
+                        strategy, content, branding, websites
+                        and performance marketing that people
+                        actually remember.
+
+                    </p>
+
+                    <div className="hero-buttons">
+
+                        <button className="primary-btn">
+
+                            LET'S TALK
+
+                            <span>→</span>
+
+                        </button>
+
+                        <button className="secondary-btn">
+
+                            OUR SERVICES
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {/* Scroll */}
+
+            <div className="scroll-indicator">
+
+                <span></span>
+
+            </div>
+
+        </section>
+
+    );
+
 }

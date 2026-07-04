@@ -1,56 +1,620 @@
+/* ===================================================
+   WHY KINETIX
+=================================================== */
+
 .why{
-    width:min(1180px,92%);
-    margin:180px auto;
+
+    position:relative;
+
+    width:min(1220px,92%);
+
+    margin:120px auto 160px;
+
+    overflow:visible;
+
+    isolation:isolate;
+
+}
+
+/* ===================================================
+   FULL SCREEN BACKGROUND
+=================================================== */
+
+.why::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:-260px;
+
+    transform:translateX(-50%);
+
+    width:100vw;
+
+    height:1200px;
+
+    pointer-events:none;
+
+    z-index:-3;
+
+    background:
+
+        radial-gradient(
+            circle at 12% 22%,
+            rgba(217,255,0,.16) 0%,
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 82% 58%,
+            rgba(217,255,0,.08) 0%,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 18%,
+            rgba(217,255,0,.05) 0%,
+            transparent 42%
+        ),
+
+        radial-gradient(
+            circle at 40% 85%,
+            rgba(255,255,255,.025),
+            transparent 45%
+        );
+
+    filter:blur(120px);
+
+    animation:ambientMove 14s ease-in-out infinite;
+
+}
+
+/* dark vignette */
+
+.why::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:-200px;
+
+    transform:translateX(-50%);
+
+    width:100vw;
+
+    height:1200px;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    background:
+
+        linear-gradient(
+
+            to bottom,
+
+            rgba(0,0,0,0),
+
+            rgba(0,0,0,.08),
+
+            rgba(0,0,0,.22)
+
+        );
+
+}
+
+/* ===================================================
+   HEADING
+=================================================== */
+
+.why-heading{
+
+    max-width:760px;
+
+    margin:0 0 45px;
+
+    text-align:left;
+
+}
+
+.why .section-tag{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    color:var(--primary);
+
+    letter-spacing:.28em;
+
+    text-transform:uppercase;
+
+    font-size:13px;
+
+}
+
+.why .section-tag::before{
+
+    content:"";
+
+    width:40px;
+
+    height:1px;
+
+    background:var(--primary);
+
 }
 
 .why h2{
+
     margin-top:18px;
-    font-size:72px;
-    line-height:1;
-    max-width:900px;
+
+    font-size:clamp(4rem,6vw,5.8rem);
+
+    line-height:.92;
+
+    letter-spacing:-4px;
+
+    font-weight:800;
+
 }
+
+.why h2 span{
+
+    color:var(--primary);
+
+    text-shadow:
+
+        0 0 35px rgba(217,255,0,.22);
+
+}
+
+.why-heading p{
+
+    margin-top:26px;
+
+    max-width:620px;
+
+    color:#8c8c8c;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+/* ===================================================
+   GRID
+=================================================== */
 
 .why-grid{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
-    gap:28px;
-    margin-top:80px;
+
+    gap:24px;
+
 }
+
+/* ===================================================
+   CARD
+=================================================== */
 
 .why-card{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+
+    position:relative;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    padding:34px;
+
+    min-height:220px;
+
     border-radius:24px;
-    padding:42px;
-    transition:.35s ease;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.03),
+            rgba(255,255,255,.015)
+        );
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:
+        transform .45s,
+        border-color .45s,
+        box-shadow .45s;
+
 }
 
-.why-card:hover{
-    transform:translateY(-10px);
-    border-color:#D9FF00;
-    background:rgba(217,255,0,.05);
+/* ===================================================
+   CARD GLOW
+=================================================== */
+
+.card-glow{
+
+    position:absolute;
+
+    inset:-40%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(217,255,0,.12),
+
+            transparent 60%
+
+        );
+
+    opacity:0;
+
+    transition:.45s;
+
+    pointer-events:none;
+
 }
+
+/* ===================================================
+   ICON
+=================================================== */
+
+.icon-wrap{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:24px;
+
+    color:var(--primary);
+
+    background:
+
+        rgba(217,255,0,.06);
+
+    border:
+
+        1px solid rgba(217,255,0,.18);
+
+}
+
+.icon-wrap svg{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+/* ===================================================
+   TEXT
+=================================================== */
 
 .why-card h3{
+
     font-size:30px;
-    margin-bottom:18px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+    letter-spacing:-1px;
+
 }
 
 .why-card p{
-    color:#9b9b9b;
-    line-height:1.8;
+
+    color:#8d8d8d;
+
+    line-height:1.75;
+
+    font-size:16px;
+
+}
+/* ===================================================
+   PREMIUM HOVER
+=================================================== */
+
+.why-card:hover{
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(217,255,0,.25);
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.45),
+
+        0 0 35px rgba(217,255,0,.08);
+
 }
 
-@media(max-width:900px){
+.why-card:hover .card-glow{
 
-    .why h2{
-        font-size:46px;
+    opacity:1;
+
+    transform:scale(1.2);
+
+}
+
+.why-card:hover h3{
+
+    color:var(--primary);
+
+}
+
+.why-card:hover p{
+
+    color:#d5d5d5;
+
+}
+
+.why-card:hover .icon-wrap{
+
+    background:
+
+        rgba(217,255,0,.12);
+
+    border-color:
+
+        rgba(217,255,0,.35);
+
+    box-shadow:
+
+        0 0 25px rgba(217,255,0,.15);
+
+}
+
+/* ===================================================
+   TOP BORDER ANIMATION
+=================================================== */
+
+.why-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:0;
+
+    height:2px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--primary),
+            rgba(217,255,0,.2)
+        );
+
+    transition:.45s;
+
+}
+
+.why-card:hover::before{
+
+    width:100%;
+
+}
+
+/* ===================================================
+   GLASS SHINE
+=================================================== */
+
+.why-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-70%;
+
+    left:-35%;
+
+    width:110px;
+
+    height:240%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.18),
+
+            transparent
+
+        );
+
+    transform:
+
+        rotate(18deg)
+
+        translateX(-240%);
+
+}
+
+.why-card:hover::after{
+
+    animation:whyShine .9s ease;
+
+}
+
+/* ===================================================
+   FLOATING ANIMATION
+=================================================== */
+
+.why-card{
+
+    animation:whyFloat 8s ease-in-out infinite;
+
+}
+
+.why-card:nth-child(2){
+
+    animation-delay:1.5s;
+
+}
+
+.why-card:nth-child(3){
+
+    animation-delay:3s;
+
+}
+
+.why-card:nth-child(4){
+
+    animation-delay:4.5s;
+
+}
+
+/* ===================================================
+   ICON ANIMATION
+=================================================== */
+
+.why-card:hover .icon-wrap svg{
+
+    transform:
+
+        rotate(-8deg)
+
+        scale(1.08);
+
+}
+
+.icon-wrap svg{
+
+    transition:.45s;
+
+}
+
+/* ===================================================
+   ANIMATIONS
+=================================================== */
+
+@keyframes whyFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
     }
 
-    .why-grid{
-        grid-template-columns:1fr;
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+}
+
+@keyframes whyGlow{
+
+    0%,100%{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity:.35;
+
+    }
+
+    50%{
+
+        transform:
+            translate(35px,-20px)
+            scale(1.08);
+
+        opacity:.8;
+
+    }
+
+}
+
+@keyframes whyShine{
+
+    from{
+
+        transform:
+
+            rotate(18deg)
+
+            translateX(-240%);
+
+    }
+
+    to{
+
+        transform:
+
+            rotate(18deg)
+
+            translateX(330%);
+
+    }
+
+}
+@keyframes ambientMove{
+
+    0%,100%{
+
+        transform:
+
+            translateX(-50%)
+
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateX(-50%)
+
+            scale(1.08)
+
+            translateY(-30px);
+
     }
 
 }

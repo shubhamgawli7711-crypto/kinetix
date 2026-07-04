@@ -1,0 +1,22 @@
+.kinetix-cursor{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    pointer-events:none;
+    z-index:999999;
+}
+
+html,
+body{
+    cursor:none;
+}
+
+a,
+button,
+input,
+textarea,
+select,
+label{
+    cursor:none;
+}
