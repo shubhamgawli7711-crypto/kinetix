@@ -1,66 +1,94 @@
 import { useState } from "react";
 
-const faqs = [
+interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+const FAQ_ITEMS: FaqItem[] = [
   {
-    question: "How long does a project usually take?",
+    id: "timeline",
+    question: "How long does a typical project take?",
     answer:
-      "Every project is different, but most branding and website projects take between 2–6 weeks depending on the scope.",
+      "Most engagements run a few weeks depending on scope — branding and websites usually move faster than full campaigns. On our first call we'll map out a realistic timeline before any work begins.",
   },
   {
-    question: "Do you work with international clients?",
+    id: "process",
+    question: "What does the process look like once we start?",
     answer:
-      "Yes. Kinetix works remotely with clients across India and internationally.",
+      "We begin with discovery and strategy, move into design and production, then handle delivery and support. You'll have visibility at every stage through regular updates.",
   },
   {
-    question: "Which services do you provide?",
+    id: "pricing",
+    question: "How is pricing structured?",
     answer:
-      "Branding, Web Design & Development, Video Editing, Content Creation, Performance Marketing, and Social Media Management.",
+      "Every project is scoped individually based on the service and complexity involved. After our first conversation, you'll receive a clear quotation so there are no surprises later. Projects begin once the scope is approved and the advance payment is received.",
   },
   {
-    question: "How do we get started?",
+    id: "revisions",
+    question: "How many revisions are included?",
     answer:
-      "Simply submit the contact form. We'll review your project and get back to you within 12 hours.",
+      "Revisions are included within the agreed scope of each project. Additional rounds beyond that scope can be added if needed, and we'll always let you know before any extra charges apply.",
+  },
+  {
+    id: "location",
+    question: "Do you only work with local businesses?",
+    answer:
+      "We're based in Palghar, Maharashtra, but we work with startups, local businesses and established brands across India. Most communication happens over call, email and WhatsApp, so location is rarely a limitation.",
   },
 ];
 
 export default function ContactFAQ() {
-  const [active, setActive] = useState<number | null>(0);
+  const [openId, setOpenId] = useState<string | null>(FAQ_ITEMS[0].id);
+
+  const toggleItem = (id: string) => {
+    setOpenId((current) => (current === id ? null : id));
+  };
 
   return (
-    <section className="contact-faq reveal">
+    <section className="contact-faq-section reveal" aria-label="Frequently asked questions">
       <div className="contact-container">
-        <span className="section-tag">FAQ</span>
-
-        <h2 className="faq-title">
-          Frequently Asked Questions
-        </h2>
+        <div className="faq-header">
+          <span className="contact-tag">FAQ</span>
+          <h2 className="faq-title">Common Questions</h2>
+        </div>
 
         <div className="faq-list">
-          {faqs.map((faq, index) => (
-            <div
-              className={`faq-item ${
-                active === index ? "active" : ""
-              }`}
-              key={faq.question}
-            >
-              <button
-                className="faq-question"
-                onClick={() =>
-                  setActive(active === index ? null : index)
-                }
+          {FAQ_ITEMS.map((item) => {
+            const isOpen = openId === item.id;
+
+            return (
+              <div
+                key={item.id}
+                className={`faq-item ${isOpen ? "faq-item--open" : ""}`}
               >
-                <span>{faq.question}</span>
+                <button
+                  type="button"
+                  className="faq-question"
+                  onClick={() => toggleItem(item.id)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${item.id}`}
+                  id={`faq-trigger-${item.id}`}
+                >
+                  <span>{item.question}</span>
+                  <span className="faq-icon" aria-hidden="true">
+                    <span className="faq-icon-line faq-icon-line--h" />
+                    <span className="faq-icon-line faq-icon-line--v" />
+                  </span>
+                </button>
 
-                <span>{active === index ? "−" : "+"}</span>
-              </button>
-
-              {active === index && (
-                <div className="faq-answer">
-                  <p>{faq.answer}</p>
+                <div
+                  id={`faq-panel-${item.id}`}
+                  role="region"
+                  aria-labelledby={`faq-trigger-${item.id}`}
+                  className="faq-answer-wrapper"
+                >
+                  <p className="faq-answer">{item.answer}</p>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
