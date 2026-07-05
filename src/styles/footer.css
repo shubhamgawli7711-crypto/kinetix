@@ -611,3 +611,78 @@ width:110px;
    No layout structure changed — still the same stacked
    icon-row-then-logo pattern from the 1100px block.
 ===================================================== */
+/* ===================================================
+   LEGAL LINKS
+=================================================== */
+
+.footer-legal{
+
+    padding:28px 0 24px;
+
+}
+
+.legal-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+}
+
+.legal-links a{
+
+    color:#7d7d7d;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    transition:
+
+        color .35s ease;
+
+}
+
+.legal-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.legal-divider{
+
+    color:rgba(255,255,255,.18);
+
+    font-size:12px;
+
+}
+
+@media (max-width:768px){
+
+    .footer-legal{
+
+        padding:22px 0;
+
+    }
+
+    .legal-links{
+
+        gap:10px;
+
+        font-size:12px;
+
+    }
+
+    .legal-links a{
+
+        font-size:12px;
+
+    }
+
+}

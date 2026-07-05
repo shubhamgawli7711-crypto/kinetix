@@ -1,28 +1,36 @@
 /* ===================================================
-   ABOUT
+   ABOUT PAGE
 =================================================== */
 
-.about{
+.about-page{
 
-    position:relative;
-
-    padding:140px 0;
+    background:#050505;
 
     overflow:hidden;
 
 }
 
 /* ===================================================
-   AMBIENT GLOW
+   HERO
 =================================================== */
 
-.about-glow{
+.about-hero{
+
+    position:relative;
+
+    padding:190px 0 140px;
+
+}
+
+.about-hero::before{
+
+    content:"";
 
     position:absolute;
 
-    right:-250px;
+    right:-260px;
 
-    top:50%;
+    top:-180px;
 
     width:700px;
 
@@ -31,45 +39,34 @@
     border-radius:50%;
 
     background:
+
         radial-gradient(
+
             circle,
+
             rgba(217,255,0,.06),
-            transparent 72%
+
+            transparent 70%
+
         );
 
-    filter:blur(100px);
-
-    animation:aboutGlow 12s ease-in-out infinite;
+    filter:blur(120px);
 
     pointer-events:none;
 
 }
 
+.about-tag{
 
-/* ===================================================
-   GRID
-=================================================== */
+    color:var(--primary);
 
-.about-grid{
+    text-transform:uppercase;
 
-    position:relative;
+    letter-spacing:.35em;
 
-    display:grid;
+    font-size:13px;
 
-    grid-template-columns:1fr 1fr;
-
-    gap:120px;
-
-    align-items:center;
-
-    z-index:2;
-
-}
-/* ===================================================
-   LEFT
-=================================================== */
-
-.section-tag{
+    margin-bottom:28px;
 
     display:flex;
 
@@ -77,23 +74,13 @@
 
     gap:14px;
 
-    margin-bottom:26px;
-
-    color:var(--primary);
-
-    font-size:13px;
-
-    letter-spacing:.32em;
-
-    text-transform:uppercase;
-
 }
 
-.section-tag::before{
+.about-tag::before{
 
     content:"";
 
-    width:40px;
+    width:44px;
 
     height:1px;
 
@@ -101,45 +88,127 @@
 
 }
 
-.about h2{
+.about-hero h1{
 
     margin:0;
 
-    font-size:clamp(3rem,5vw,5rem);
+    font-size:clamp(4.8rem,8vw,8rem);
 
-    line-height:.92;
+    line-height:.9;
 
-    letter-spacing:-4px;
+    letter-spacing:-5px;
 
     font-weight:800;
 
 }
-.about h2 span{
+
+.about-hero h1 span{
 
     color:var(--primary);
 
-    text-shadow:
-        0 0 20px rgba(217,255,0,.12);
-
 }
 
-.about-sub{
+.about-description{
 
     margin-top:34px;
 
-    max-width:540px;
+    max-width:700px;
 
-    font-size:18px;
+    font-size:20px;
 
-    line-height:1.9;
+    line-height:1.8;
 
-    color:#9d9d9d;
+    color:#9b9b9b;
 
 }
 
 /* ===================================================
-   RIGHT
+   SECTIONS
 =================================================== */
+
+.about-section{
+
+    padding:130px 0;
+
+}
+
+.about-section.dark{
+
+    background:#080808;
+
+}
+
+.section-label{
+
+    color:var(--primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:.28em;
+
+    font-size:12px;
+
+    margin-bottom:18px;
+
+}
+
+.about-heading{
+
+    max-width:700px;
+
+    margin:0 auto 80px;
+
+    text-align:center;
+
+}
+
+.about-heading h2{
+
+    margin:0;
+
+    font-size:clamp(3rem,5vw,4.8rem);
+
+    line-height:1;
+
+}
+
+.about-heading span{
+
+    color:var(--primary);
+
+}
+
+/* ===================================================
+   ABOUT GRID
+=================================================== */
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:90px;
+
+    align-items:start;
+
+}
+
+.about-left h2{
+
+    margin:0;
+
+    font-size:clamp(3rem,5vw,4.5rem);
+
+    line-height:1;
+
+}
+
+.about-left span{
+
+    color:var(--primary);
+
+}
 
 .about-right{
 
@@ -147,17 +216,173 @@
 
     flex-direction:column;
 
-    gap:28px;
+    gap:30px;
 
 }
 
 .about-right p{
 
+    color:#9b9b9b;
+
     font-size:18px;
 
     line-height:1.9;
 
+    margin:0;
+
+}
+
+/* ===================================================
+   MISSION
+=================================================== */
+
+.mission-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:34px;
+
+}
+
+.mission-card{
+
+    padding:48px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    background:rgba(255,255,255,.02);
+
+    transition:.4s;
+
+}
+
+.mission-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(217,255,0,.35);
+
+}
+
+.mission-card span{
+
+    color:var(--primary);
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
+
+.mission-card h3{
+
+    margin:24px 0 18px;
+
+    font-size:28px;
+
+}
+
+.mission-card p{
+
+    margin:0;
+
     color:#9b9b9b;
+
+    line-height:1.8;
+
+}
+/* ===================================================
+   VALUES
+=================================================== */
+
+.values-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+}
+
+.value-card{
+
+    position:relative;
+
+    padding:42px;
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    overflow:hidden;
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        background .4s ease;
+
+}
+
+.value-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:var(--primary);
+
+    transform:scaleX(0);
+
+    transform-origin:left;
+
+    transition:transform .45s ease;
+
+}
+
+.value-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(217,255,0,.3);
+
+    background:rgba(255,255,255,.03);
+
+}
+
+.value-card:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+.value-card h3{
+
+    margin:0 0 18px;
+
+    font-size:28px;
+
+}
+
+.value-card p{
+
+    margin:0;
+
+    color:#9b9b9b;
+
+    line-height:1.8;
+
+    font-size:17px;
 
 }
 
@@ -165,240 +390,93 @@
    STATS
 =================================================== */
 
-.about-stats{
+.stats-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
 
-    gap:22px;
-
-    margin-top:40px;
+    gap:30px;
 
 }
 
-.stat-card{
+.stat{
 
-    position:relative;
+    text-align:center;
 
-    padding:28px;
+    padding:48px 30px;
 
-    border-radius:24px;
+    border:1px solid rgba(255,255,255,.05);
 
-    overflow:hidden;
-
-    background:
-
-        linear-gradient(
-
-            180deg,
-
-            rgba(255,255,255,.05),
-
-            rgba(255,255,255,.02)
-
-        );
-
-    backdrop-filter:blur(22px);
-
-    -webkit-backdrop-filter:blur(22px);
-
-    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.02);
 
     transition:
-
         transform .4s ease,
-
-        border-color .4s ease,
-
-        box-shadow .4s ease;
+        border-color .4s ease;
 
 }
 
-.stat-card:hover{
+.stat:hover{
 
     transform:translateY(-8px);
 
-    border-color:rgba(217,255,0,.45);
-
-    box-shadow:
-
-0 15px 40px rgba(0,0,0,.35),
-
-0 0 40px rgba(217,255,0,.18);
+    border-color:rgba(217,255,0,.28);
 
 }
 
-.stat-card h3{
+.stat h2{
 
-    font-size:28px;
+    margin:0;
 
-    font-weight:700;
+    color:var(--primary);
 
-    color:#fff;
+    font-size:clamp(3rem,5vw,4.5rem);
 
-    letter-spacing:-1px;
+    line-height:1;
+
+    text-shadow:
+
+        0 0 22px rgba(217,255,0,.12);
 
 }
-.stat-card span{
 
-    display:block;
+.stat p{
 
-    margin-top:14px;
+    margin-top:18px;
 
     color:#9b9b9b;
 
-    font-size:15px;
+    letter-spacing:.08em;
 
-    line-height:1.8;
+    text-transform:uppercase;
 
-    text-transform:none;
-
-    letter-spacing:0;
-
-}
-/* ===================================================
-   GLASS SHINE
-=================================================== */
-
-.stat-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:-60%;
-
-    left:-35%;
-
-    width:120px;
-
-    height:220%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.18),
-            transparent
-        );
-
-    transform:rotate(18deg);
-
-    opacity:0;
-
-}
-
-.stat-card:hover::before{
-
-    animation:cardShine .8s ease;
+    font-size:13px;
 
 }
 
 /* ===================================================
-   CARD GLOW
+   REVEAL
 =================================================== */
 
-.stat-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:auto;
-
-    width:220px;
-
-    height:220px;
-
-    right:-120px;
-
-    bottom:-120px;
-
-    border-radius:50%;
-
-    background:
-
-        radial-gradient(
-
-            circle,
-
-            rgba(217,255,0,.14),
-
-            transparent 70%
-
-        );
-
-    filter:blur(55px);
+.reveal{
 
     opacity:0;
 
-    transition:.45s;
+    transform:translateY(35px);
+
+    transition:
+
+        opacity .8s ease,
+
+        transform .8s ease;
 
 }
 
-.stat-card:hover::after{
+.revealed{
 
     opacity:1;
 
-}
-
-/* ===================================================
-   WATERMARK MOTION
-=================================================== */
-
-
-@keyframes aboutGlow{
-
-    0%,100%{
-
-        opacity:.35;
-
-        transform:
-        translate(0,0)
-        scale(1);
-
-    }
-
-    50%{
-
-        opacity:.8;
-
-        transform:
-        translate(-40px,30px)
-        scale(1.12);
-
-    }
-
-}
-
-@keyframes cardShine{
-
-    from{
-
-        transform:
-            translateX(-180%)
-            rotate(18deg);
-
-        opacity:0;
-
-    }
-
-    20%{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        transform:
-            translateX(320%)
-            rotate(18deg);
-
-        opacity:0;
-
-    }
+    transform:translateY(0);
 
 }
 
@@ -406,163 +484,125 @@
    RESPONSIVE
 =================================================== */
 
-@media(max-width:1000px){
+@media (max-width:1100px){
 
-.about-grid{
+    .about-grid{
 
-grid-template-columns:1fr;
+        grid-template-columns:1fr;
 
-gap:80px;
-
-}
-
-.about-stats{
-
-grid-template-columns:1fr;
-
-}
-
-.about-watermark{
-
-display:none;
-
-}
-
-}
-
-@media(max-width:768px){
-
-.about{
-
-padding:100px 0;
-
-}
-
-.about h2{
-
-font-size:46px;
-
-letter-spacing:-2px;
-
-}
-
-.about-sub{
-
-font-size:16px;
-
-}
-
-.about-right p{
-
-font-size:16px;
-
-}
-
-.stat-card{
-
-    animation:cardBreath 6s ease-in-out infinite;
-
-}
-
-.stat-card h3{
-
-font-size:36px;
-
-}
-
-}
-/* ==========================================
-   FLOATING ORBS
-========================================== */
-
-.about-orbs{
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-}
-
-.about-orbs span{
-
-    position:absolute;
-
-    width:10px;
-
-    height:10px;
-
-    border-radius:50%;
-
-    background:#D9FF00;
-
-    filter:blur(3px);
-
-    opacity:.22;
-
-}
-
-.about-orbs span:nth-child(1){
-
-    top:18%;
-
-    right:18%;
-
-    animation:orbFloat 9s ease-in-out infinite;
-
-}
-
-.about-orbs span:nth-child(2){
-
-    bottom:22%;
-
-    right:8%;
-
-    animation:orbFloat 12s ease-in-out infinite;
-
-}
-
-.about-orbs span:nth-child(3){
-
-    top:60%;
-
-    right:28%;
-
-    animation:orbFloat 10s ease-in-out infinite;
-
-}
-
-@keyframes orbFloat{
-
-    0%,100%{
-
-        transform:
-        translateY(0)
-        scale(1);
+        gap:60px;
 
     }
 
-    50%{
+    .mission-grid{
 
-        transform:
-        translateY(-20px)
-        scale(1.4);
+        grid-template-columns:1fr;
+
+    }
+
+    .values-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
 
     }
 
 }
-@keyframes cardBreath{
 
-    0%,100%{
+@media (max-width:768px){
 
-        transform:translateY(0);
+    .about-hero{
+
+        padding:140px 0 90px;
 
     }
 
-    50%{
+    .about-section{
 
-        transform:translateY(-4px);
+        padding:90px 0;
+
+    }
+
+    .about-hero h1{
+
+        font-size:54px;
+
+        letter-spacing:-3px;
+
+        line-height:.95;
+
+    }
+
+    .about-description{
+
+        font-size:16px;
+
+        line-height:1.8;
+
+    }
+
+    .about-left h2,
+
+    .about-heading h2{
+
+        font-size:42px;
+
+    }
+
+    .mission-card,
+
+    .value-card{
+
+        padding:34px;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .about-hero{
+
+        padding-top:120px;
+
+    }
+
+    .about-tag{
+
+        font-size:11px;
+
+        letter-spacing:.22em;
+
+    }
+
+    .about-hero h1{
+
+        font-size:42px;
+
+    }
+
+    .about-description{
+
+        margin-top:24px;
+
+    }
+
+    .mission-card h3,
+
+    .value-card h3{
+
+        font-size:24px;
 
     }
 
