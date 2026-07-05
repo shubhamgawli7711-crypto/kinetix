@@ -486,35 +486,40 @@ width:180px;
 
 /* =====================================================
    MOBILE
+   (values below were tightened from the original —
+   see note at the bottom of this file for what changed
+   and why)
 ===================================================== */
 
 @media(max-width:700px){
 
 .footer{
 
-margin:140px auto 30px;
+margin:70px auto 24px;
 
 }
 
 .footer-tagline{
 
-margin-bottom:55px;
+margin-bottom:36px;
 
 }
 
 .footer-tagline h2{
 
-font-size:42px;
+font-size:34px;
 
-letter-spacing:-2px;
+letter-spacing:-1.5px;
 
 }
 
 .footer-glass{
 
-padding:20px;
+padding:18px;
 
-border-radius:28px;
+border-radius:24px;
+
+gap:14px;
 
 }
 
@@ -548,8 +553,61 @@ line-height:1.5;
 
 .footer-logo{
 
-width:150px;
+width:130px;
 
 }
 
 }
+
+@media(max-width:400px){
+
+.footer{
+
+margin:50px auto 20px;
+
+}
+
+.footer-tagline{
+
+margin-bottom:28px;
+
+}
+
+.footer-tagline h2{
+
+font-size:28px;
+
+}
+
+.footer-logo{
+
+width:110px;
+
+}
+
+}
+
+/* =====================================================
+   NOTE ON THE MOBILE BREAKPOINT ABOVE
+
+   The original @media(max-width:700px) block used:
+     .footer{ margin:140px auto 30px; }
+     .footer-tagline{ margin-bottom:55px; }
+     .footer-tagline h2{ font-size:42px; letter-spacing:-2px; }
+     .footer-glass{ padding:20px; border-radius:28px; }
+     .footer-left{ gap:12px; }
+     .footer-icon{ width:42px; height:42px; }
+     .footer-copy{ font-size:12px; line-height:1.5; }
+     .footer-logo{ width:150px; }
+
+   On an actual phone screen that produced a very tall
+   footer: 140px of top margin plus a 55px tagline gap
+   plus a stacked icon-row/logo-row glass panel added up
+   to far more vertical space than the rest of the site's
+   mobile sections use. The numbers above bring that back
+   in line with the spacing scale the rest of the mobile
+   breakpoints use (e.g. contact.css, why.css), and a new
+   400px breakpoint tightens it further for small phones.
+   No layout structure changed — still the same stacked
+   icon-row-then-logo pattern from the 1100px block.
+===================================================== */

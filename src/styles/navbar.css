@@ -665,7 +665,7 @@
 
 }
 
-.mobile-drawer__cta{
+.mobile-drawer a.mobile-drawer__cta{
 
     margin-top:28px;
 
@@ -697,7 +697,7 @@
 
 }
 
-.mobile-drawer__cta:hover{
+.mobile-drawer a.mobile-drawer__cta:hover{
 
     transform:translateY(-2px);
 
@@ -735,6 +735,30 @@
     .nav-toggle__line{
 
         transition:none;
+
+    }
+
+}
+
+/* ======================================================
+   MOBILE: KEEP FULL LOGO, DISABLE SWAP TO SMALL "K"
+   (new — desktop scroll-swap behavior above is untouched)
+====================================================== */
+
+@media(max-width:768px){
+
+    .logo-small{
+
+        display:none;
+
+    }
+
+    .logo-full,
+    .logo-full.hide-logo{
+
+        opacity:1;
+
+        transform:translateY(-50%) scale(1);
 
     }
 
