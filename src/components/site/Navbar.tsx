@@ -120,13 +120,16 @@ export default function Navbar() {
 
 <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
 
-        <Link
-          to="/contact"
-          className="mobile-drawer__cta"
-          onClick={() => setMenuOpen(false)}
-        >
-          LET'S TALK →
-        </Link>
+      <Link
+  to="/contact"
+  className="mobile-drawer__cta"
+  onClick={() => {
+    console.log("CTA clicked");
+    setMenuOpen(false);
+  }}
+>
+  LET'S TALK →
+</Link>
 
       </nav>
     </>
