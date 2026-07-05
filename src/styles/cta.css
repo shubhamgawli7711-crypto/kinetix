@@ -317,3 +317,62 @@ RESPONSIVE
 }
 
 }
+/* ==========================================
+   LEGAL LINKS
+========================================== */
+
+.legal-section{
+
+    padding:32px 0;
+
+}
+
+.legal-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+    font-size:13px;
+
+    font-weight:500;
+
+}
+
+.legal-links a{
+
+    color:#7d7d7d;
+
+    text-decoration:none;
+
+    transition:color .3s ease;
+
+}
+
+.legal-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.legal-links span{
+
+    color:rgba(255,255,255,.18);
+
+}
+
+@media (max-width:768px){
+
+    .legal-links{
+
+        gap:10px;
+
+        font-size:12px;
+
+    }
+
+}

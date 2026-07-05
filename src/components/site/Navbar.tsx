@@ -71,11 +71,14 @@ export default function Navbar() {
 
         {/* CTA */}
 
-        <Link to="/contact" className="nav-btn">
+        <Link
+    to="/contact"
+    className="primary-btn"
+>
 
-          LET'S TALK →
+    LET'S TALK
 
-        </Link>
+</Link>
 
         {/* Hamburger (mobile only) */}
 

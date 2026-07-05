@@ -1,5 +1,6 @@
 import "../../styles/cta.css";
 import useReveal from "../../hooks/useReveal";
+import { Link } from "react-router-dom";
 
 export default function CTA() {
 
@@ -37,23 +38,23 @@ export default function CTA() {
 
                 </p>
 
-                <a
+                <Link
 
-                    href="/contact"
+    to="/contact"
 
-                    className="cta-button"
+    className="cta-button"
 
-                >
+>
 
-                    LET'S TALK
+    LET'S TALK
 
-                    <span>
+    <span>
 
-                        →
+        →
 
-                    </span>
+    </span>
 
-                </a>
+</Link>
 
             </div>
 
@@ -62,3 +63,36 @@ export default function CTA() {
     );
 
 }
+<section className="legal-section">
+
+    <div className="container">
+
+        <div className="legal-links">
+
+            <Link to="/terms">
+
+                Terms & Conditions
+
+            </Link>
+
+            <span>│</span>
+
+            <Link to="/privacy">
+
+                Privacy Policy
+
+            </Link>
+
+            <span>│</span>
+
+            <Link to="/disclaimer">
+
+                Disclaimer
+
+            </Link>
+
+        </div>
+
+    </div>
+
+</section>

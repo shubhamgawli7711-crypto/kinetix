@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "../../styles/footer.css";
 import { FaInstagram } from "react-icons/fa6";
 import { FiMail } from "react-icons/fi";
@@ -61,44 +60,4 @@ export default function Footer() {
 
     </footer>
   );
-}<section className="footer-legal">
-
-    <div className="container">
-
-        <div className="legal-links">
-
-            <Link to="/terms">
-
-                Terms & Conditions
-
-            </Link>
-
-            <span className="legal-divider">
-
-                │
-
-            </span>
-
-            <Link to="/privacy">
-
-                Privacy Policy
-
-            </Link>
-
-            <span className="legal-divider">
-
-                │
-
-            </span>
-
-            <Link to="/disclaimer">
-
-                Disclaimer
-
-            </Link>
-
-        </div>
-
-    </div>
-
-</section>
+}
