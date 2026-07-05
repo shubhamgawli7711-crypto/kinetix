@@ -59,21 +59,19 @@ export default function Navbar() {
 
         <nav className="nav-links">
 
-          <Link to="/">Home</Link>
+  <Link to="/">Home</Link>
 
-          <Link to="/about">About</Link>
+  <Link to="/about">About</Link>
 
-          <Link to="/services">Services</Link>
+  <Link to="/contact">Contact</Link>
 
-          <Link to="/contact">Contact</Link>
-
-        </nav>
+</nav>
 
         {/* CTA */}
 
         <Link
     to="/contact"
-    className="primary-btn"
+    className="nav-btn"
 >
 
     LET'S TALK
@@ -116,13 +114,11 @@ export default function Navbar() {
         aria-hidden={!menuOpen}
       >
 
-        <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+       <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
 
-        <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+<Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
 
-        <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
-
-        <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+<Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
 
         <Link
           to="/contact"

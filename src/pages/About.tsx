@@ -3,7 +3,7 @@ import CTA from "../components/sections/CTA";
 import Footer from "../components/layout/Footer";
 import useReveal from "../hooks/useReveal";
 
-import "../styles/about.css";
+import "../styles/about-page.css";
 
 export default function About() {
 

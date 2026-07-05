@@ -1,4 +1,5 @@
 import useReveal from "../../hooks/useReveal";
+import "../../styles/about.css";
 
 export default function About() {
 
