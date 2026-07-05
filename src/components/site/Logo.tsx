@@ -12,7 +12,6 @@ export default function Logo({
       src="/logo.svg"
       alt="Kinetix Logo"
       width={size}
-      height={size}
       draggable={false}
       className={className}
     />

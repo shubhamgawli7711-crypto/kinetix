@@ -5,6 +5,7 @@ import { processSteps } from "../../data/processData";
 import Timeline from "./Timeline";
 import ProcessPanel from "./ProcessPanel";
 import { useProcessAnimation } from "./useProcessAnimation";
+import useIsDesktop from "../../hooks/useIsDesktop";
 
 export default function Process() {
 
@@ -15,6 +16,8 @@ export default function Process() {
         activeStep
 
     } = useProcessAnimation();
+
+    const isDesktop = useIsDesktop(1101);
 
     return (
 
@@ -53,19 +56,91 @@ export default function Process() {
 
                     </h2>
 
-                    <Timeline
+                    {isDesktop && (
 
-                        activeStep={activeStep}
+                        <Timeline
 
-                    />
+                            activeStep={activeStep}
+
+                        />
+
+                    )}
 
                 </div>
 
-                <ProcessPanel
+                {isDesktop ? (
 
-                    step={processSteps[activeStep]}
+                    <ProcessPanel
 
-                />
+                        step={processSteps[activeStep]}
+
+                    />
+
+                ) : (
+
+                    <div className="process-right process-right--stacked">
+
+                        {processSteps.map((step) => (
+
+                            <div
+                                key={step.number}
+                                className="process-panel reveal"
+                                data-reveal="up"
+                            >
+
+                                <div className="panel-glow"></div>
+
+                                <div className="panel-content">
+
+                                    <span className="panel-number">
+                                        {step.number}
+                                    </span>
+
+                                    <h3 className="panel-title">
+                                        {step.title}
+                                    </h3>
+
+                                    <p className="panel-description">
+                                        {step.description}
+                                    </p>
+
+                                    <div className="panel-divider"></div>
+
+                                    <div className="panel-points">
+
+                                        {step.points.map((point) => (
+
+                                            <div
+                                                className="panel-chip"
+                                                key={point}
+                                            >
+
+                                                <svg
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                >
+                                                    <path d="M20 6L9 17L4 12" />
+                                                </svg>
+
+                                                <span>{point}</span>
+
+                                            </div>
+
+                                        ))}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                )}
 
             </div>
 

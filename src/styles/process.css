@@ -918,3 +918,40 @@ TIMELINE
         filter;
 
 }
+
+/* =====================================================
+   STACKED MOBILE STEPS
+   (new — everything above this line is unchanged from
+   the original file)
+
+   Below 1101px, Process.tsx renders every step as its
+   own static .process-panel inside .process-right--stacked
+   instead of one animated panel, so all four steps need
+   to sit one below another instead of centered/overlapping.
+===================================================== */
+
+.process-right--stacked{
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:36px;
+
+}
+
+.process-right--stacked .process-panel{
+
+    width:100%;
+
+}
+
+@media (max-width:768px){
+
+.process-right--stacked{
+
+    gap:24px;
+
+}
+
+}

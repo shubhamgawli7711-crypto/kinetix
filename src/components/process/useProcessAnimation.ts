@@ -14,86 +14,105 @@ export function useProcessAnimation() {
 
     useLayoutEffect(() => {
 
-        const trigger = ScrollTrigger.create({
+        const mm = gsap.matchMedia();
 
-            trigger: sectionRef.current,
+        // The pinned, scroll-scrubbed panel experience is a desktop-only
+        // pattern. process.css switches `.process` from a pinned 100vh
+        // section to a normal height:auto stacked layout below 1101px
+        // (see @media(max-width:1100px) in process.css) — pinning a
+        // height:auto section causes GSAP to fight the CSS layout, so no
+        // ScrollTrigger is created at all under that width. Process.tsx
+        // renders a plain stacked list of all steps instead in that case.
+        mm.add("(min-width: 1101px)", () => {
 
-            start: "top top",
+            const trigger = ScrollTrigger.create({
 
-            end: "+=4000",
+                trigger: sectionRef.current,
 
-            pin: true,
+                start: "top top",
 
-            scrub: 1,
+                end: "+=4000",
 
-            anticipatePin: 1,
+                pin: true,
 
-            onUpdate: (self) => {
+                scrub: 1,
 
-                const step = Math.min(
-                    3,
-                    Math.floor(self.progress * 4)
-                );
+                anticipatePin: 1,
 
-                if (step !== currentStep.current) {
+                onUpdate: (self) => {
 
-                    currentStep.current = step;
+                    const step = Math.min(
+                        3,
+                        Math.floor(self.progress * 4)
+                    );
 
-                    const content = document.querySelector(".panel-content");
+                    if (step !== currentStep.current) {
 
-                    if (content) {
+                        currentStep.current = step;
 
-                        gsap.to(content, {
+                        const content = document.querySelector(".panel-content");
 
-                            opacity: 0,
+                        if (content) {
 
-                            y: -20,
+                            gsap.to(content, {
 
-                            filter: "blur(8px)",
+                                opacity: 0,
 
-                            duration: 0.25,
+                                y: -20,
 
-                            ease: "power2.in",
+                                filter: "blur(8px)",
 
-                            onComplete: () => {
+                                duration: 0.25,
 
-                                setActiveStep(step);
+                                ease: "power2.in",
 
-                                gsap.fromTo(
+                                onComplete: () => {
 
-                                    content,
+                                    setActiveStep(step);
 
-                                    {
-                                        opacity: 0,
-                                        y: 20,
-                                        filter: "blur(8px)"
-                                    },
+                                    gsap.fromTo(
 
-                                    {
-                                        opacity: 1,
-                                        y: 0,
-                                        filter: "blur(0px)",
-                                        duration: 0.45,
-                                        ease: "power3.out"
-                                    }
+                                        content,
 
-                                );
+                                        {
+                                            opacity: 0,
+                                            y: 20,
+                                            filter: "blur(8px)"
+                                        },
 
-                            }
+                                        {
+                                            opacity: 1,
+                                            y: 0,
+                                            filter: "blur(0px)",
+                                            duration: 0.45,
+                                            ease: "power3.out"
+                                        }
 
-                        });
+                                    );
+
+                                }
+
+                            });
+
+                        }
 
                     }
 
                 }
 
-            }
+            });
+
+            return () => {
+
+                trigger.kill();
+
+            };
 
         });
 
         return () => {
 
-            trigger.kill();
+            mm.revert();
 
         };
 
